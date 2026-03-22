@@ -4,9 +4,17 @@
 
 Afya AI is a bilingual AI-powered health diagnosis web platform built for East Africa. It enables patients and healthcare professionals to analyse symptoms intelligently, receive ranked condition assessments powered by Claude AI, and book verified specialists — all in **English or Swahili**.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-afya--aai.netlify.app-1A6B5E?style=flat-square)](https://afya-aai.netlify.app)
 [![Built with Claude AI](https://img.shields.io/badge/Powered%20by-Claude%20AI-1A6B5E?style=flat-square)](https://anthropic.com)
 [![Language](https://img.shields.io/badge/Language-HTML%20%7C%20CSS%20%7C%20JS-E85D3A?style=flat-square)]()
 [![Bilingual](https://img.shields.io/badge/Bilingual-EN%20%7C%20SW-F2C94C?style=flat-square)]()
+[![License](https://img.shields.io/badge/License-MIT-0F1923?style=flat-square)](LICENSE)
+
+---
+
+## 🌐 Live Demo
+
+👉 **[https://afya-aai.netlify.app](https://afya-aai.netlify.app)**
 
 ---
 
@@ -22,7 +30,6 @@ Afya AI is a bilingual AI-powered health diagnosis web platform built for East A
 ---
 
 ## 📁 Project Structure
-
 ```
 afya-ai/
 ├── index.html          # Main HTML — all pages (SPA routing)
@@ -41,8 +48,8 @@ afya-ai/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/afya-ai.git
-cd afya-ai
+git clone https://github.com/MurugiKelvin/Afya-Project.git
+cd Afya-Project
 ```
 
 ### 2. Set up your API key
@@ -58,7 +65,6 @@ ANTHROPIC_API_KEY=your_api_key_here
 
 ### 3. Open locally
 Simply open `index.html` in your browser — no build step required.
-
 ```bash
 # Or use a simple local server (recommended)
 npx serve .
@@ -70,22 +76,19 @@ python -m http.server 8000
 
 ## 🌐 Deployment
 
-### Deploy to Vercel (recommended — free)
-```bash
-# Install Vercel CLI
-npm install -g vercel
+### Deployed on Netlify ✅
+The live site is hosted on Netlify at:
+👉 **[https://afya-aai.netlify.app](https://afya-aai.netlify.app)**
 
-# Deploy
-vercel
-```
-
-### Deploy to Netlify
-Drag and drop the project folder at [netlify.com/drop](https://app.netlify.com/drop)
+### Deploy your own copy to Netlify (easiest)
+1. Go to **[app.netlify.com/drop](https://app.netlify.com/drop)**
+2. Drag and drop the project folder
+3. Done — live in seconds!
 
 ### Deploy to GitHub Pages
 1. Go to your repo → **Settings** → **Pages**
 2. Set source to `main` branch, `/ (root)`
-3. Your site will be live at `https://YOUR_USERNAME.github.io/afya-ai`
+3. Your site will be live at `https://MurugiKelvin.github.io/Afya-Project`
 
 ---
 
