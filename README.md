@@ -148,3 +148,4 @@ Built for East Africa, by East Africa. 🇰🇪
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
+

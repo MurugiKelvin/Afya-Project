@@ -363,3 +363,5 @@ function addChatMsg(text,role,id=null) {
   msgs.scrollTop=msgs.scrollHeight;
 }
 function removeMsg(id) { const e=document.getElementById(id); if(e) e.remove(); }
+
+// Afya AI v1.0
