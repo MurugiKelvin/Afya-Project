@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Afya AI — Intelligent Health Diagnosis for East Africa. AI-powered symptom checker, bilingual EN/SW, doctor booking."/>
+<meta name="author" content="Kelvin Ndung'u Murugi"/>
+<title>Afya AI — Intelligent Health Diagnosis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="showPage('landing')">Afya<span> AI</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('landing')" data-key="nav_home">Home</a></li>
+    <li><a onclick="showPage('checker')" data-key="nav_checker">Symptom Checker</a></li>
+    <li><a onclick="showPage('chat')" data-key="nav_chat">AI Diagnosis</a></li>
+    <li><a onclick="showPage('doctors')" data-key="nav_doctors">Doctors</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('sw')">SW</button>
+    </div>
+    <button class="nav-cta" onclick="showPage('checker')" data-key="nav_cta">Check Symptoms →</button>
+  </div>
+</nav>
+
+<!-- ══ LANDING ══ -->
+<div id="page-landing" class="page active">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge" data-key="badge">AI-Powered Health Insights</div>
+      <h1 data-key="hero_h1">Know your health, <em>intelligently.</em></h1>
+      <p class="hero-sub" data-key="hero_sub">Afya AI combines advanced AI with clinical data to help you understand symptoms, assess risks, and connect with the right specialists — instantly.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('checker')" data-key="btn_check">🩺 Check Symptoms</button>
+        <button class="btn-outline" onclick="showPage('chat')" data-key="btn_chat">💬 AI Chat</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="feature-card tall dark" onclick="showPage('checker')">
+        <span class="feature-icon">🔍</span>
+        <div class="feature-title" data-key="fc1_title">Symptom Checker</div>
+        <div class="feature-desc" data-key="fc1_desc">Guided 3-step analysis with real AI-powered condition matching.</div>
+      </div>
+      <div class="feature-card" onclick="showPage('chat')">
+        <span class="feature-icon">🤖</span>
+        <div class="feature-title" data-key="fc2_title">AI Diagnosis Chat</div>
+        <div class="feature-desc" data-key="fc2_desc">Conversational health guidance powered by Claude AI.</div>
+      </div>
+      <div class="feature-card" onclick="showPage('doctors')">
+        <span class="feature-icon">👨‍⚕️</span>
+        <div class="feature-title" data-key="fc3_title">Book a Doctor</div>
+        <div class="feature-desc" data-key="fc3_desc">Find and consult verified specialists near you.</div>
+      </div>
+    </div>
+  </section>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">2.4M+</div><div class="stat-label" data-key="stat1">Symptoms analyzed</div></div>
+    <div class="stat"><div class="stat-num">94%</div><div class="stat-label" data-key="stat2">Accuracy rate</div></div>
+    <div class="stat"><div class="stat-num">1,200+</div><div class="stat-label" data-key="stat3">Verified specialists</div></div>
+    <div class="stat"><div class="stat-num">48hr</div><div class="stat-label" data-key="stat4">Avg. booking time</div></div>
+  </div>
+</div>
+
+<!-- ══ SYMPTOM CHECKER ══ -->
+<div id="page-checker" class="page">
+  <div class="checker-wrap">
+    <div class="page-title" data-key="checker_title">Symptom Checker</div>
+    <div class="page-sub" data-key="checker_sub">Answer a few questions and AI will help identify what might be going on.</div>
+    <div class="step-indicator">
+      <div class="step active" id="step1">
+        <div class="step-num">1</div>
+        <span class="step-label" data-key="step1_label">Body Area</span>
+      </div>
+      <div class="step-line" id="line1"></div>
+      <div class="step" id="step2">
+        <div class="step-num">2</div>
+        <span class="step-label" data-key="step2_label">Symptoms</span>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step" id="step3">
+        <div class="step-num">3</div>
+        <span class="step-label" data-key="step3_label">Severity</span>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div id="checker-step-1">
+      <div class="card">
+        <h3 data-key="s1_q">Where do you feel discomfort?</h3>
+        <div class="body-areas">
+          <button class="area-btn" onclick="selectArea(this,'Head & Brain')"><span class="area-emoji">🧠</span><span data-key="area1">Head & Brain</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Chest & Heart')"><span class="area-emoji">❤️</span><span data-key="area2">Chest & Heart</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Stomach & Gut')"><span class="area-emoji">🫃</span><span data-key="area3">Stomach & Gut</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Respiratory')"><span class="area-emoji">🫁</span><span data-key="area4">Respiratory</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Skin')"><span class="area-emoji">🧴</span><span data-key="area5">Skin</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Joints & Muscles')"><span class="area-emoji">🦴</span><span data-key="area6">Joints & Muscles</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Eyes')"><span class="area-emoji">👁️</span><span data-key="area7">Eyes</span></button>
+          <button class="area-btn" onclick="selectArea(this,'Ear, Nose, Throat')"><span class="area-emoji">👂</span><span data-key="area8">Ear, Nose, Throat</span></button>
+          <button class="area-btn" onclick="selectArea(this,'General / Whole Body')"><span class="area-emoji">🌡️</span><span data-key="area9">General / Whole Body</span></button>
+        </div>
+      </div>
+      <div class="checker-nav"><div></div><button class="btn-primary" onclick="goStep(2)" data-key="btn_next">Next →</button></div>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="checker-step-2" style="display:none">
+      <div class="card">
+        <h3 data-key="s2_q">What symptoms are you experiencing?</h3>
+        <div class="symptom-tags" id="symptom-tags"></div>
+        <div class="symptom-input-wrap">
+          <input class="symptom-input" id="symptom-in" type="text" data-key-placeholder="sym_placeholder" placeholder="e.g. headache, fever, nausea..." onkeydown="if(event.key==='Enter')addSymptom()"/>
+          <button class="add-btn" onclick="addSymptom()">+</button>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:7px;flex-wrap:wrap" id="quick-symptoms"></div>
+      </div>
+      <div class="checker-nav">
+        <button class="btn-outline" onclick="goStep(1)" data-key="btn_back">← Back</button>
+        <button class="btn-primary" onclick="goStep(3)" data-key="btn_next">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="checker-step-3" style="display:none">
+      <div class="card">
+        <h3 data-key="s3_sev">How severe are your symptoms? (1–10)</h3>
+        <div class="slider-wrap">
+          <div class="slider-label"><span data-key="mild">Mild (1)</span><span id="sev-val">5</span><span data-key="severe">Severe (10)</span></div>
+          <input type="range" min="1" max="10" value="5" oninput="document.getElementById('sev-val').textContent=this.value" id="severity-range"/>
+        </div>
+      </div>
+      <div class="card">
+        <h3 data-key="s3_dur">How long have you had these symptoms?</h3>
+        <div class="radio-group" id="duration-group">
+          <button class="radio-btn" onclick="selectRadio(this,'duration-group')" data-key="dur1">Today</button>
+          <button class="radio-btn" onclick="selectRadio(this,'duration-group')" data-key="dur2">2–3 days</button>
+          <button class="radio-btn" onclick="selectRadio(this,'duration-group')" data-key="dur3">1 week</button>
+          <button class="radio-btn" onclick="selectRadio(this,'duration-group')" data-key="dur4">2+ weeks</button>
+          <button class="radio-btn" onclick="selectRadio(this,'duration-group')" data-key="dur5">Chronic</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3 data-key="s3_extra">Do you have any of the following?</h3>
+        <div class="radio-group" id="extra-group">
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex1">Fever</button>
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex2">Shortness of breath</button>
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex3">Chest pain</button>
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex4">Nausea</button>
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex5">Rash</button>
+          <button class="radio-btn" onclick="toggleExtra(this)" data-key="ex6">None</button>
+        </div>
+      </div>
+      <div class="checker-nav">
+        <button class="btn-outline" onclick="goStep(2)" data-key="btn_back">← Back</button>
+        <button class="btn-primary" onclick="runAIDiagnosis()" data-key="btn_analyze">🤖 Analyze with AI →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESULTS ══ -->
+<div id="page-results" class="page">
+  <div class="results-wrap">
+    <div class="page-title" data-key="results_title">Your Results</div>
+    <div class="page-sub" data-key="results_sub">AI-generated assessment. This is not a medical diagnosis — always consult a licensed doctor.</div>
+    <div id="results-loading" class="ai-loading-card" style="display:none">
+      <div class="spinner"></div>
+      <p data-key="analyzing">Analyzing your symptoms with AI...</p>
+    </div>
+    <div id="results-content" style="display:none">
+      <div id="risk-banner" class="risk-banner moderate">
+        <div class="risk-icon" id="risk-icon">⚠️</div>
+        <div>
+          <div class="risk-title" id="risk-title">Moderate Risk</div>
+          <div class="risk-sub" id="risk-sub"></div>
+        </div>
+      </div>
+      <div class="illness-filter-bar">
+        <label data-key="filter_label">Filter by:</label>
+        <button class="filter-chip active" onclick="filterIllness('all',this)" data-key="filter_all">All Conditions</button>
+        <button class="filter-chip" onclick="filterIllness('low',this)" data-key="filter_low">🟢 Low Severity</button>
+        <button class="filter-chip" onclick="filterIllness('moderate',this)" data-key="filter_mod">🟡 Moderate</button>
+        <button class="filter-chip" onclick="filterIllness('high',this)" data-key="filter_high">🔴 High Severity</button>
+        <button class="filter-chip" onclick="filterIllness('similar',this)" data-key="filter_sim">🔗 Most Similar</button>
+      </div>
+      <div class="conditions-grid" id="conditions-grid"></div>
+      <div class="card" style="margin-bottom:18px">
+        <h3>🤖 <span data-key="ai_summary_title">AI Summary & Recommendations</span></h3>
+        <div id="ai-summary-text" style="font-size:.9rem;line-height:1.7;color:var(--mid);margin-top:8px"></div>
+      </div>
+      <div class="result-actions">
+        <p data-key="next_steps">What would you like to do next?</p>
+        <button class="btn-primary" onclick="showPage('doctors')" data-key="btn_book">👨‍⚕️ Book a Doctor</button>
+        <button class="btn-outline" onclick="showPage('chat')" data-key="btn_chat_ai">💬 Chat with AI</button>
+        <button class="btn-outline" onclick="showPage('checker')" data-key="btn_recheck">🔄 Re-check Symptoms</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DOCTORS ══ -->
+<div id="page-doctors" class="page">
+  <div class="doctors-wrap">
+    <div class="page-title" data-key="doc_title">Doctor Directory</div>
+    <div class="page-sub" data-key="doc_sub">Find and book verified specialists. All doctors are licensed and peer-reviewed.</div>
+    <div class="spec-filter-bar">
+      <button class="filter-chip active" onclick="setFilter(this,'all')" data-key="filter_all_spec">All Specialties</button>
+      <button class="filter-chip" onclick="setFilter(this,'general')" data-key="spec1">General Practice</button>
+      <button class="filter-chip" onclick="setFilter(this,'pulmo')" data-key="spec2">Pulmonology</button>
+      <button class="filter-chip" onclick="setFilter(this,'cardio')" data-key="spec3">Cardiology</button>
+      <button class="filter-chip" onclick="setFilter(this,'neuro')" data-key="spec4">Neurology</button>
+      <button class="filter-chip" onclick="setFilter(this,'derm')" data-key="spec5">Dermatology</button>
+    </div>
+    <div class="doctors-grid" id="doctors-grid">
+      <div class="doctor-card" data-spec="general">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#dbeafe;color:#1d4ed8">AK</div>
+        <div><div class="doctor-name">Dr. Amara Kimani</div><div class="doctor-spec" data-key="spec_gp">General Practice</div><div class="doctor-meta"><span class="stars">★★★★★</span> 4.9 · 312 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Nairobi CBD</span><span class="doctor-tag">Teleconsult</span><span class="doctor-tag">EN/SW</span></div>
+        <div class="avail"><span><span class="avail-dot"></span><span data-key="avail_today">Available today</span></span><button class="book-btn" onclick="openModal('Dr. Amara Kimani')" data-key="book">Book</button></div>
+      </div>
+      <div class="doctor-card" data-spec="pulmo">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#dcfce7;color:#166534">JO</div>
+        <div><div class="doctor-name">Dr. James Odhiambo</div><div class="doctor-spec" data-key="spec_pulmo">Pulmonologist</div><div class="doctor-meta"><span class="stars">★★★★★</span> 4.8 · 198 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Westlands</span><span class="doctor-tag">Asthma</span><span class="doctor-tag">Respiratory</span></div>
+        <div class="avail"><span><span class="avail-dot"></span>Next: 2pm</span><button class="book-btn" onclick="openModal('Dr. James Odhiambo')" data-key="book">Book</button></div>
+      </div>
+      <div class="doctor-card" data-spec="cardio">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#fce7f3;color:#9d174d">FN</div>
+        <div><div class="doctor-name">Dr. Fatuma Njoroge</div><div class="doctor-spec" data-key="spec_cardio">Cardiologist</div><div class="doctor-meta"><span class="stars">★★★★☆</span> 4.7 · 145 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Karen</span><span class="doctor-tag">Heart Failure</span><span class="doctor-tag">Hypertension</span></div>
+        <div class="avail"><span><span class="avail-dot"></span><span data-key="avail_tom">Tomorrow 9am</span></span><button class="book-btn" onclick="openModal('Dr. Fatuma Njoroge')" data-key="book">Book</button></div>
+      </div>
+      <div class="doctor-card" data-spec="neuro">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#fef9c3;color:#854d0e">MW</div>
+        <div><div class="doctor-name">Dr. Michael Waweru</div><div class="doctor-spec" data-key="spec_neuro">Neurologist</div><div class="doctor-meta"><span class="stars">★★★★★</span> 4.9 · 87 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Upper Hill</span><span class="doctor-tag">Migraine</span><span class="doctor-tag">Epilepsy</span></div>
+        <div class="avail"><span><span class="avail-dot"></span><span data-key="avail_today">Available today</span></span><button class="book-btn" onclick="openModal('Dr. Michael Waweru')" data-key="book">Book</button></div>
+      </div>
+      <div class="doctor-card" data-spec="derm">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#ede9fe;color:#5b21b6">SC</div>
+        <div><div class="doctor-name">Dr. Sarah Chege</div><div class="doctor-spec" data-key="spec_derm">Dermatologist</div><div class="doctor-meta"><span class="stars">★★★★☆</span> 4.6 · 220 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Kilimani</span><span class="doctor-tag">Acne & Eczema</span><span class="doctor-tag">Teleconsult</span></div>
+        <div class="avail"><span><span class="avail-dot"></span>Next: 4pm</span><button class="book-btn" onclick="openModal('Dr. Sarah Chege')" data-key="book">Book</button></div>
+      </div>
+      <div class="doctor-card" data-spec="general">
+        <div class="doctor-top"><div class="doctor-avatar" style="background:#ffedd5;color:#9a3412">DO</div>
+        <div><div class="doctor-name">Dr. Daniel Otieno</div><div class="doctor-spec" data-key="spec_gp">General Practice</div><div class="doctor-meta"><span class="stars">★★★★★</span> 4.8 · 411 <span data-key="reviews">reviews</span></div></div></div>
+        <div class="doctor-tags"><span class="doctor-tag">Parklands</span><span class="doctor-tag">Teleconsult</span><span class="doctor-tag">Pediatrics</span></div>
+        <div class="avail"><span><span class="avail-dot"></span><span data-key="avail_now">Available now</span></span><button class="book-btn" onclick="openModal('Dr. Daniel Otieno')" data-key="book">Book</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AI CHAT ══ -->
+<div id="page-chat" class="page">
+  <div class="chat-wrap">
+    <div class="chat-header">
+      <div class="page-title" style="font-size:2rem;margin-bottom:4px" data-key="chat_title">AI Diagnosis Chat</div>
+      <div class="page-sub" style="margin-bottom:0" data-key="chat_sub">Describe your symptoms naturally and our AI will help assess your condition.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg ai">
+        <div class="msg-sender">Afya AI</div>
+        <span id="chat-welcome">Hello! I'm your AI health assistant powered by Claude. Describe what you're feeling — symptoms, duration, severity. I'll help identify possible conditions and guide you. I'm not a replacement for a doctor. 🩺</span>
+      </div>
+    </div>
+    <div class="chat-input-bar">
+      <input class="chat-input" id="chat-input" type="text" data-key-placeholder="chat_placeholder" placeholder="Describe your symptoms..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3 id="modal-title"></h3>
+    <p id="modal-body"></p>
+    <div class="modal-actions">
+      <button class="modal-close" onclick="closeModal()" data-key="cancel">Cancel</button>
+      <button class="modal-confirm" onclick="confirmModal()" data-key="confirm">Confirm ✓</button>
+    </div>
+  </div>
+</div>
+
+<footer><strong>Afya AI</strong> — <span data-key="footer">For informational purposes only. Always consult a licensed medical professional.</span></footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
